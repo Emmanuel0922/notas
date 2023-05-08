@@ -11,7 +11,7 @@ class RegisterController extends GetxController {
   TextEditingController correoText = TextEditingController();
   TextEditingController claveText = TextEditingController();
 
-  void registro() {
+  Future<void> registro() async {
     String name = nombreText.text;
     String email = correoText.text.trim().toLowerCase();
     String clave = correoText.text.trim();
@@ -35,10 +35,11 @@ class RegisterController extends GetxController {
       return;
     }
 
-    // Verificar si el correo ya está registrado
-    final usersExis = Database.getUserByEmail(email);
-    if (usersExis != null) {
-      Get.snackbar('Error', 'El correo ya está registrado');
+    // verificar si el usuario ya está registrado
+    Users? usuarioExistente = await Database.getUserByEmail(email);
+    if (usuarioExistente != null) {
+      Get.snackbar(
+          'Error', 'El correo ya está registrado ${usuarioExistente.email}');
       return;
     }
 

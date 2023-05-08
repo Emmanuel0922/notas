@@ -8,7 +8,7 @@ class Database {
 
   static Future<void> open() async {
     final appDocumentDir = await getApplicationDocumentsDirectory();
-    final path = '${appDocumentDir.path}/objectbox';
+    final path = '${appDocumentDir.path}/notas';
 
     _store = Store(getObjectBoxModel(), directory: path);
   }
