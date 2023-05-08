@@ -1,4 +1,3 @@
-
 import 'package:notas/objectbox.g.dart';
 import 'package:notas/src/models/entity/notas_model.dart';
 import 'package:notas/src/models/entity/usuarios_model.dart';
@@ -16,4 +15,13 @@ class Database {
 
   static Box<Users> get userBox => _store.box<Users>();
   static Box<Notas> get personasBox => _store.box<Notas>();
+
+  static Future<Users?> getUserByEmail(String email) async {
+    final query = userBox.query(Users_.email.equals(email)).build();
+    final results = query.find();
+    if (results.isEmpty) {
+      return null;
+    }
+    return results.first;
+  }
 }

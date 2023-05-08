@@ -28,14 +28,21 @@ class RegisterController extends GetxController {
       Get.snackbar('Error', 'La clave es inválida');
       return;
     }
-    RegExp claveValida = RegExp(
-        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}\$');
+    RegExp claveValida = RegExp(r'^.{8,}$');
+
     if (!claveValida.hasMatch(clave)) {
       Get.snackbar('Error', 'La clave no cumple con los requisitos');
       return;
     }
 
-     String claveEncriptada = sha256.convert(utf8.encode(clave)).toString();
+    // Verificar si el correo ya está registrado
+    final usersExis = Database.getUserByEmail(email);
+    if (usersExis != null) {
+      Get.snackbar('Error', 'El correo ya está registrado');
+      return;
+    }
+
+    String claveEncriptada = sha256.convert(utf8.encode(clave)).toString();
 
     // Crea una nueva instancia del modelo de usuario con los datos ingresados
     final user = Users(name: name, email: email, pass: claveEncriptada);
