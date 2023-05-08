@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:notas/src/ui/pages/login/login_page.dart';
 import 'package:notas/src/ui/pages/register/register_page.dart';
 
 void main() => runApp(const MyApp());
@@ -12,12 +13,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: '/register',
+      initialRoute: '/login',
       getPages: [
-        GetPage(
-          name: '/register',
-          page: () => RegisterPage(),
-        ),
+        GetPage(name: '/register', page: () => RegisterPage()),
+        GetPage(name: '/login', page: () => LoginPage()),
+        // GetPage(name: '/third', page: () => Third()),
+        // GetPage(name: "/fourth", page: () => Fourth()),
       ],
       theme: ThemeData(
         brightness: Brightness.dark,

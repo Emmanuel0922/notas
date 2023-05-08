@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../register/register_controller.dart';
+import '../register/widgets/text_fiel.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    var con1 = Get.put(RegisterController());
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -33,7 +40,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 30),
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
@@ -44,10 +51,10 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(30),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 60),
+                      const SizedBox(height: 60),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -71,18 +78,16 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                  hintText: "Correo electrónico",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                  border: InputBorder.none,
-                                ),
+                              child: TextFiel(
+                                hintText: 'Nombre',
+                                iconData: Icons.person,
+                                textInputType: TextInputType.visiblePassword,
+                                obscureText: true,
+                                textEditingController: con1.claveText,
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               decoration: const BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
@@ -90,20 +95,31 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              child: TextFormField(
-                                decoration: const InputDecoration(
-                                  hintText: "Contraseña",
-                                  hintStyle: TextStyle(
-                                    color: Colors.grey,
-                                  ),
-                                  border: InputBorder.none,
-                                ),
+                              child: TextFiel(
+                                hintText: 'Clave',
+                                iconData: Icons.lock,
+                                textInputType: TextInputType.visiblePassword,
+                                obscureText: true,
+                                textEditingController: con1.claveText,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 20),
+                      Container(
+                          padding: const EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed('/register');
+                            },
+                            child: const Text(
+                              '¿No tienes una cuenta? ¡Registrate ya!',
+                              style:
+                                  TextStyle(fontSize: 13, color: Colors.black),
+                            ),
+                          )),
+                      const SizedBox(height: 10),
                       Container(
                         height: 50,
                         margin: const EdgeInsets.symmetric(horizontal: 50),
@@ -115,9 +131,9 @@ class LoginPage extends StatelessWidget {
                           child: Text(
                             "Iniciar sesión",
                             style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
                           ),
                         ),
                       ),
