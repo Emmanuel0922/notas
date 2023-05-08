@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:notas/src/ui/pages/register/register_page.dart';
 
-void main() => runApp(const MyApp());
+import 'src/models/store.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Database.open(); // espera a que se abra la base de datos
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
