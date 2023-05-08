@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/register',
-          page: () => const RegisterPage(),
+          page: () => RegisterPage(),
         ),
       ],
       theme: ThemeData(

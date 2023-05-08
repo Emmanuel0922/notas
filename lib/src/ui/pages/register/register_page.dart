@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:notas/src/utils/my_colors.dart';
 
+import 'register_controller.dart';
+import 'widgets/text_fiel.dart';
+
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterController con = Get.put(RegisterController());
+
+  RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,40 +17,62 @@ class RegisterPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Column(
-        children: [
-          _textFielNombre(
-            hintText: 'Nombre',
-            iconData: Icons.person,
+      body: Center(
+        child: Container(
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              TextFiel(
+                hintText: 'Nombre',
+                iconData: Icons.person,
+                textInputType: TextInputType.text,
+                obscureText: false,
+                textEditingController: con.nombreText,
+              ),
+              TextFiel(
+                hintText: 'Correo',
+                iconData: Icons.mail,
+                textInputType: TextInputType.emailAddress,
+                obscureText: false,
+                textEditingController: con.correoText,
+              ),
+              TextFiel(
+                hintText: 'Clave',
+                iconData: Icons.lock,
+                textInputType: TextInputType.visiblePassword,
+                obscureText: true,
+                textEditingController: con.claveText,
+              ),
+              BotonRegister(),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
-Widget _textFielNombre({
-  required String hintText,
-  required IconData iconData,
-}) {
+// ignore: non_constant_identifier_names
+Widget BotonRegister() {
+  RegisterController con = Get.put(RegisterController());
   return Container(
-    margin: EdgeInsets.only(top: 30, left: 50, right: 50, bottom: 5),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(30),
-    ),
-    child: TextFormField(
-      //controller: con.emailController,
-      keyboardType: TextInputType.text,
-      decoration: InputDecoration(
-          hintText: hintText,
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.all(15),
-          hintStyle: TextStyle(color: Colors.black),
-          prefixIcon: Icon(
-            iconData,
-            color: Colors.black,
-          )),
+    width: 200,
+    margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+    child: ElevatedButton(
+      onPressed: () => con.registro(),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: MyColors.primaryColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        padding: const EdgeInsets.symmetric(
+          vertical: 15,
+        ),
+      ),
+      child: const Text(
+        'REGISTRASE',
+        style: TextStyle(
+          color: Colors.black,
+        ),
+      ),
     ),
   );
 }
