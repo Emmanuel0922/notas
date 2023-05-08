@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:notas/src/ui/pages/register/register_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,16 +9,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
+      initialRoute: '/register',
+      getPages: [
+        GetPage(
+          name: '/register',
+          page: () => const RegisterPage(),
         ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+      ],
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.lightBlue[800],
       ),
+      navigatorKey: Get.key,
     );
   }
 }
