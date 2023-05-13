@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../register/register_controller.dart';
 import '../register/widgets/text_fiel.dart';
+import 'login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var con1 = Get.put(RegisterController());
+    var con1 = Get.put(LoginController());
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -81,9 +80,9 @@ class LoginPage extends StatelessWidget {
                               child: TextFiel(
                                 hintText: 'Nombre',
                                 iconData: Icons.person,
-                                textInputType: TextInputType.visiblePassword,
-                                obscureText: true,
-                                textEditingController: con1.claveText,
+                                textInputType: TextInputType.emailAddress,
+                                obscureText: false,
+                                textEditingController: con1.correoText,
                               ),
                             ),
                             Container(
@@ -127,13 +126,16 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                           color: const Color(0xFF61A4F1),
                         ),
-                        child: const Center(
-                          child: Text(
-                            "Iniciar sesión",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
+                        child: GestureDetector(
+                          onTap: () => con1.login(),
+                          child: const Center(
+                            child: Text(
+                              "Iniciar sesión",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
                           ),
                         ),
                       ),
