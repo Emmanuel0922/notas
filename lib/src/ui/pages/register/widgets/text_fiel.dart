@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 Widget TextFiel({
   required String hintText,
   required IconData iconData,
@@ -10,7 +8,6 @@ Widget TextFiel({
   required TextEditingController textEditingController,
 }) {
   return Container(
-    
     margin: const EdgeInsets.only(top: 30, left: 50, right: 50, bottom: 5),
     decoration: BoxDecoration(
       color: Colors.white,

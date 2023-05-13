@@ -17,8 +17,8 @@ class Database {
   static Box<Notas> get personasBox => _store.box<Notas>();
 
   static Future<Users?> getUserByEmail(String email) async {
-    final query = userBox.query(Users_.email.equals(email)).build();
-    final results = query.find();
+    final query = userBox.query(Users_.email.equals(email)).build().find();
+    final results = query;
     if (results.isEmpty) {
       return null;
     }

@@ -27,13 +27,18 @@ class RegisterController extends GetxController {
     if (clave.isEmpty) {
       Get.snackbar('Error', 'La clave es inválida');
       return;
-    }
-    RegExp claveValida = RegExp(r'^.{8,}$');
-
-    if (!claveValida.hasMatch(clave)) {
-      Get.snackbar('Error', 'La clave no cumple con los requisitos');
+    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$&*~]).+$')
+        .hasMatch(clave)) {
+      Get.snackbar('Error', 'La contraseña no cumple los requisitos');
       return;
     }
+
+    // RegExp claveValida = RegExp(r'^.{8,}$');
+
+    // if (!claveValida.hasMatch(clave)) {
+    //   Get.snackbar('Error', 'La clave no cumple con los requisitos');
+    //   return;
+    // }
 
     // verificar si el usuario ya está registrado
     Users? usuarioExistente = await Database.getUserByEmail(email);
