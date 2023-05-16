@@ -7,6 +7,7 @@ import 'widgets/text_fiel.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterController con = Get.put(RegisterController());
+  
 
   RegisterPage({super.key});
 
@@ -20,31 +21,33 @@ class RegisterPage extends StatelessWidget {
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          child: Column(
-            children: [
-              TextFiel(
-                hintText: 'Nombre',
-                iconData: Icons.person,
-                textInputType: TextInputType.text,
-                obscureText: false,
-                textEditingController: con.nombreText,
-              ),
-              TextFiel(
-                hintText: 'Correo',
-                iconData: Icons.mail,
-                textInputType: TextInputType.emailAddress,
-                obscureText: false,
-                textEditingController: con.correoText,
-              ),
-              TextFiel(
-                hintText: 'Clave',
-                iconData: Icons.lock,
-                textInputType: TextInputType.visiblePassword,
-                obscureText: true,
-                textEditingController: con.claveText,
-              ),
-              BotonRegister(),
-            ],
+          child: Form(
+            child: Column(
+              children: [
+                TextFiel(
+                  hintText: 'Nombre',
+                  iconData: Icons.person,
+                  textInputType: TextInputType.text,
+                  obscureText: false,
+                  textEditingController: con.nombreText,
+                ),
+                TextFiel(
+                  hintText: 'Correo',
+                  iconData: Icons.mail,
+                  textInputType: TextInputType.emailAddress,
+                  obscureText: false,
+                  textEditingController: con.correoText,
+                ),
+                TextFiel(
+                  hintText: 'Clave',
+                  iconData: Icons.lock,
+                  textInputType: TextInputType.visiblePassword,
+                  obscureText: false,
+                  textEditingController: con.claveText,
+                ),
+                BotonRegister(),
+              ],
+            ),
           ),
         ),
       ),

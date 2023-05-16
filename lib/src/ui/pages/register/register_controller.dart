@@ -14,7 +14,7 @@ class RegisterController extends GetxController {
   Future<void> registro() async {
     String name = nombreText.text;
     String email = correoText.text.trim().toLowerCase();
-    String clave = correoText.text.trim();
+    String clave = claveText.text.trim();
 
     if (name.isEmpty) {
       Get.snackbar('Error', 'El Nombre es inválido');
@@ -27,18 +27,12 @@ class RegisterController extends GetxController {
     if (clave.isEmpty) {
       Get.snackbar('Error', 'La clave es inválida');
       return;
-    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$&*~]).+$')
+    }
+    else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
         .hasMatch(clave)) {
       Get.snackbar('Error', 'La contraseña no cumple los requisitos');
       return;
     }
-
-    // RegExp claveValida = RegExp(r'^.{8,}$');
-
-    // if (!claveValida.hasMatch(clave)) {
-    //   Get.snackbar('Error', 'La clave no cumple con los requisitos');
-    //   return;
-    // }
 
     // verificar si el usuario ya está registrado
     Users? usuarioExistente = await Database.getUserByEmail(email);
