@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:notas/src/models/entity/usuarios_model.dart';
+import 'package:notas/src/ui/pages/home/home_page.dart';
 import 'package:notas/src/ui/pages/login/login_page.dart';
 import 'package:notas/src/ui/pages/register/register_page.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'src/models/store.dart';
 
@@ -12,6 +15,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+//Users myUser = Users.fromJson(GetStorage().read('user')?? {});
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,12 +24,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: '/login',
+      //initialRoute: myUser.id != null ? '/home': '/',
+      initialRoute: '/home',
       getPages: [
         GetPage(name: '/register', page: () => RegisterPage()),
         GetPage(name: '/login', page: () => const LoginPage()),
-        // GetPage(name: '/third', page: () => Third()),
-        // GetPage(name: "/fourth", page: () => Fourth()),
+        GetPage(name: '/home', page: () => HomePage()),
       ],
       theme: ThemeData(
         brightness: Brightness.dark,
