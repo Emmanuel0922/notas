@@ -28,11 +28,11 @@ class RegisterController extends GetxController {
       Get.snackbar('Error', 'La clave es inválida');
       return;
     }
-    else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
-        .hasMatch(clave)) {
-      Get.snackbar('Error', 'La contraseña no cumple los requisitos');
-      return;
-    }
+    // else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+    //     .hasMatch(clave)) {
+    //   Get.snackbar('Error', 'La contraseña no cumple los requisitos');
+    //   return;
+    // }
 
     // verificar si el usuario ya está registrado
     Users? usuarioExistente = await Database.getUserByEmail(email);
