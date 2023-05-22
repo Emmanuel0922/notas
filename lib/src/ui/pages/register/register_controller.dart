@@ -16,7 +16,7 @@ class RegisterController extends GetxController {
   Future<void> registro() async {
     String name = nombreText.text;
     String email = correoText.text.trim().toLowerCase();
-    String clave = claveText.text.trim();
+    String clave = correoText.text.trim();
 
     if (name.isEmpty) {
       Get.snackbar('Error', 'El Nombre es inválido');
@@ -30,11 +30,12 @@ class RegisterController extends GetxController {
       Get.snackbar('Error', 'La clave es inválida');
       return;
     }
-    // else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
-    //     .hasMatch(clave)) {
-    //   Get.snackbar('Error', 'La contraseña no cumple los requisitos');
-    //   return;
-    // }
+    RegExp claveValida = RegExp(r'^.{8,}$');
+
+    if (!claveValida.hasMatch(clave)) {
+      Get.snackbar('Error', 'La clave no cumple con los requisitos');
+      return;
+    }
 
     // verificar si el usuario ya está registrado
     Users? usuarioExistente = await Database.getUserByEmail(email);
@@ -55,7 +56,8 @@ class RegisterController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     UserDto userDto =
         UserDto(id: user.id, name: user.name, email: user.email, pass: '');
-    prefs.setString('usuario', userDto.toJson().toString());
+    String jsonString = jsonEncode(userDto.toJson());
+    prefs.setString('usuario', jsonString);
     Get.offNamedUntil('/home', (route) => false);
 
     // Muestra una notificación de éxito
