@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'perfil_controller.dart';
 
 class PerfilPage extends StatelessWidget {
-  const PerfilPage({super.key});
+  PerfilController con = Get.put(PerfilController());
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,7 @@ class PerfilPage extends StatelessWidget {
           Icons.power_settings_new,
           color: Colors.green,
         ),
-        onPressed: () {},
+        onPressed: () => con.singOut(),
       ),
     );
   }

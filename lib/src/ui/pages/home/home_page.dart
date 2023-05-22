@@ -12,8 +12,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Obx(() => IndexedStack(
             index: currentPage.value,
-            children: const [
-              NotasPage(),
+            children: [
+              const NotasPage(),
               PerfilPage(),
             ],
           )),
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
               ),
               GButton(
                 icon: Icons.person,
-                text: 'buscar',
+                text: 'Perfil',
                 // iconSize: 40,
               ),
             ],

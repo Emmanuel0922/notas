@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:notas/src/models/dto/user_dto.dart';
 import 'package:notas/src/models/entity/usuarios_model.dart';
 import 'package:notas/src/models/store.dart';
 // ignore: depend_on_referenced_packages
 import 'package:crypto/crypto.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterController extends GetxController {
   TextEditingController nombreText = TextEditingController();
@@ -49,6 +51,12 @@ class RegisterController extends GetxController {
 
     // Guarda el nuevo usuario en el store de usuarios
     Database.userBox.put(user);
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    UserDto userDto =
+        UserDto(id: user.id, name: user.name, email: user.email, pass: '');
+    prefs.setString('usuario', userDto.toJson().toString());
+    Get.offAll('/home');
 
     // Muestra una notificación de éxito
     Get.snackbar('Éxito', 'El usuario ha sido registrado exitosamente');
