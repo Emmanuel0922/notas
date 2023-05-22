@@ -45,12 +45,13 @@ class LoginController extends GetxController {
         name: usuarioExistente.name,
         email: usuarioExistente.email,
         pass: '');
+    String jsonString = jsonEncode(user.toJson());
     if (usuarioExistente != null) {
       if (usuarioExistente.pass == claveEncriptada) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
 
         Get.offNamedUntil('/home', (route) => false);
-        prefs.setString('usuario', user.toJson().toString());
+        prefs.setString('usuario', jsonString);
 
         print('usuario1 ${user.email}');
         return;

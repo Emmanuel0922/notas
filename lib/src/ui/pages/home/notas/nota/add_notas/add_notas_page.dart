@@ -13,6 +13,7 @@ class AddNota extends StatelessWidget {
         title: const Text('Nueva nota'),
       ),
       body: Container(
+        color: Colors.blue,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

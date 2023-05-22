@@ -11,18 +11,18 @@ class PerfilPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: Colors.blue, // Color de fondo azul
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                   radius: 75,
                   backgroundImage: NetworkImage(
                       'https://static.vecteezy.com/system/resources/previews/014/296/309/non_2x/blue-verified-social-media-account-icon-approved-profile-sign-illustration-vector.jpg')),
               SizedBox(height: 16.0),
               Text(
-                'Nombre de Usuario',
+                con.nombre,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
