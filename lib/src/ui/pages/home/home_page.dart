@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       body: Obx(() => IndexedStack(
             index: currentPage.value,
             children: [
-              const NotasPage(),
+              NotasPage(),
               PerfilPage(),
             ],
           )),
@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                 //icon: Icons.note,
                 icon: Icons.note,
                 // iconSize: 40,
-                text: 'personas',
+                text: 'Notas',
                 textStyle: TextStyle(
                   fontSize: 20,
                 ),

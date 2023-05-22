@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:notas/src/models/dto/user_dto.dart';
 import 'package:notas/src/models/entity/usuarios_model.dart';
 import 'package:notas/src/ui/pages/home/home_page.dart';
+import 'package:notas/src/ui/pages/home/notas/nota/add_notas/add_notas_page.dart';
 import 'package:notas/src/ui/pages/login/login_page.dart';
 import 'package:notas/src/ui/pages/register/register_page.dart';
 import 'package:get_storage/get_storage.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/register', page: () => RegisterPage()),
         GetPage(name: '/', page: () => const LoginPage()),
         GetPage(name: '/home', page: () => HomePage()),
+        GetPage(name: '/nueva_nota', page: () => AddNota()),
       ],
       theme: ThemeData(
         brightness: Brightness.dark,

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:notas/src/ui/widgets/widgets.dart';
 import 'package:notas/src/utils/my_colors.dart';
 
 import 'register_controller.dart';
-import 'widgets/text_fiel.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterController con = Get.put(RegisterController());
-  
 
   RegisterPage({super.key});
 
@@ -24,6 +23,9 @@ class RegisterPage extends StatelessWidget {
           child: Form(
             child: Column(
               children: [
+                SizedBox(
+                  height: 30,
+                ),
                 TextFiel(
                   hintText: 'Nombre',
                   iconData: Icons.person,

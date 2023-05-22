@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../register/widgets/text_fiel.dart';
+import 'package:notas/src/ui/widgets/widgets.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatelessWidget {

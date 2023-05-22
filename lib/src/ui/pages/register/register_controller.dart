@@ -56,7 +56,7 @@ class RegisterController extends GetxController {
     UserDto userDto =
         UserDto(id: user.id, name: user.name, email: user.email, pass: '');
     prefs.setString('usuario', userDto.toJson().toString());
-    Get.offAll('/home');
+    Get.offNamedUntil('/home', (route) => false);
 
     // Muestra una notificación de éxito
     Get.snackbar('Éxito', 'El usuario ha sido registrado exitosamente');
