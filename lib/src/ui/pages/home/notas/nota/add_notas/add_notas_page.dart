@@ -41,6 +41,7 @@ class AddNota extends StatelessWidget {
                     //color: Colors.white,
                     maxLines: null, // Permite múltiples líneas
                     minLines: 8,
+                    controller: con.notas,
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       filled: true,
@@ -57,11 +58,10 @@ class AddNota extends StatelessWidget {
                         Get.snackbar('Error', 'La clave es inválida');
                       },
                       child: Boton(
-                        titulo: 'Guardar',
-                        function: () {
-                          Get.snackbar('Error', 'La clave es inválida');
-                        },
-                      ),
+                          titulo: 'Guardar',
+                          function: () {
+                            con.guardar();
+                          }),
                     ),
                   )
                 ],

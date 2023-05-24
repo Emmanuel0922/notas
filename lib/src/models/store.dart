@@ -14,7 +14,7 @@ class Database {
   }
 
   static Box<Users> get userBox => _store.box<Users>();
-  static Box<Notas> get personasBox => _store.box<Notas>();
+  static Box<Notas> get notasBox => _store.box<Notas>();
 
   static Future<Users?> getUserByEmail(String email) async {
     final query = userBox.query(Users_.email.equals(email)).build().find();
