@@ -109,11 +109,29 @@ class _NotesPageState extends State<NotasPage> {
         not1.noteController.clear();
         return AlertDialog(
           title: Text('Add a Note'),
-          content: TextField(
-            controller: not1.noteController,
-            decoration: InputDecoration(
-              hintText: 'Enter your note',
-              border: OutlineInputBorder(),
+          content: SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 100, // Altura mínima del cuadro de diálogo
+              ),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    Flexible(
+                      child: TextField(
+                        controller: not1.noteController,
+                        decoration: InputDecoration(
+                          hintText: 'Enter your note',
+                          border: OutlineInputBorder(),
+                        ),
+                        maxLines: null, // Permite múltiples líneas
+                        keyboardType: TextInputType
+                            .multiline, // Habilita el teclado multilinea
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
           actions: [
